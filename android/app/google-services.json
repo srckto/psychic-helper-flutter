@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "485397721714",
+    "project_id": "psychic-helper",
+    "storage_bucket": "psychic-helper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485397721714:android:ff44b3fe58cf6b59a6c8eb",
+        "android_client_info": {
+          "package_name": "com.example.psychic_helper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485397721714-4hll0d3534dkqs6q5b8pbsseh4gdutcc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJnw7JhzArRmA4o2iTeDARSbbz_KPdaMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485397721714-4hll0d3534dkqs6q5b8pbsseh4gdutcc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
