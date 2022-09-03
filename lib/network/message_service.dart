@@ -71,7 +71,7 @@ class MessageService {
         .collection("chats")
         .doc(receiveId)
         .set({
-      "dateTime": DateFormat(FORMATOFDATETIME).format(DateTime.now()),
+      "dateTime": DateTime.now().toString(),
       "lastMessage": messageModel.text,
       "isShowLastMessage": true,
       "uId": receiveId,
@@ -88,7 +88,7 @@ class MessageService {
         .collection("chats")
         .doc(MainUser.model!.uId)
         .set({
-      "dateTime": DateFormat(FORMATOFDATETIME).format(DateTime.now()),
+      "dateTime": DateTime.now().toString(),
       "lastMessage": messageModel.text,
       "isShowLastMessage": false,
       "uId": MainUser.model?.uId,
