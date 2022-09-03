@@ -75,7 +75,6 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
             leading: IconButton(
               onPressed: () {
                 controller.showMessageStream?.cancel();
-                controller.messageStream?.cancel();
                 Get.delete<ChatDetailsController>(force: true);
                 Get.back();
               },
@@ -100,7 +99,12 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
                         .doc(model.uId)
                         .collection("messages")
                         .orderBy("dateTime", descending: true),
-                    builder: (context, FirestoreQueryBuilderSnapshot snapshot, child) {
+                    builder: (context, FirestoreQueryBuilderSnapshot snapshot, _) {
+                      if (snapshot.isFetching) return Center(child: CircularProgressIndicator());
+                      if (snapshot.hasError) return Center(child: Text("حدث خطأ ما"));
+                      if (!snapshot.hasData) return Center(child: Text("لا توجد رسائل"));
+                      if (snapshot.docs.isEmpty) return Center(child: Text("لا توجد رسائل"));
+
                       return Builder(
                         builder: (_) {
                           return Padding(

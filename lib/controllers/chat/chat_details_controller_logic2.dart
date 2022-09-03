@@ -14,17 +14,14 @@ import 'package:psychic_helper/network/firestore_service.dart';
 import 'package:psychic_helper/network/message_service.dart';
 
 class ChatDetailsControllerLogic2 extends GetxController {
-  // late List<MessageModel> messages;
   late bool isLoading;
   late TextEditingController textController;
   late bool loadingOfUpdatePermission;
   late int stateOfPermission;
 
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>>? showMessageStream;
-  StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? messageStream;
 
   void init(UserModel otherUserModel) {
-    // messages = [];
     isLoading = true;
     update();
     textController = TextEditingController();
