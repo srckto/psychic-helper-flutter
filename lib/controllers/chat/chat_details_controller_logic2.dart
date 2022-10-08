@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:psychic_helper/components/cutom_toast.dart';
 import 'package:psychic_helper/helper/cache_storage.dart';
 import 'package:psychic_helper/helper/constants.dart';
@@ -14,6 +15,9 @@ import 'package:psychic_helper/network/firestore_service.dart';
 import 'package:psychic_helper/network/message_service.dart';
 
 class ChatDetailsControllerLogic2 extends GetxController {
+  final UserModel userModel;
+  ChatDetailsControllerLogic2({required this.userModel});
+
   late bool isLoading;
   late TextEditingController textController;
   late bool loadingOfUpdatePermission;
@@ -21,15 +25,27 @@ class ChatDetailsControllerLogic2 extends GetxController {
 
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>>? showMessageStream;
 
-  void init(UserModel otherUserModel) {
+  @override
+  void onInit() {
     isLoading = true;
     update();
     textController = TextEditingController();
-    stateOfPermission = checkPermission(otherUserModel);
+    stateOfPermission = checkPermission(userModel);
     loadingOfUpdatePermission = false;
-    showMessageStream = checkShowMessages(otherUserModel.uId!);
+    showMessageStream = checkShowMessages(userModel.uId!);
     update();
+    super.onInit();
   }
+
+  // void init(UserModel otherUserModel) {
+  //   isLoading = true;
+  //   update();
+  //   textController = TextEditingController();
+  //   stateOfPermission = checkPermission(otherUserModel);
+  //   loadingOfUpdatePermission = false;
+  //   showMessageStream = checkShowMessages(otherUserModel.uId!);
+  //   update();
+  // }
 
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>> checkShowMessages(String receiveId) {
     return FirebaseFirestore.instance

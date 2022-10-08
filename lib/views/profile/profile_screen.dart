@@ -13,13 +13,12 @@ import 'package:psychic_helper/views/profile/screens/add_post_screen.dart';
 import 'package:psychic_helper/views/profile/screens/manage_posts_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final controller = Get.put(ProfileController());
-
     return GetBuilder<ProfileController>(
       builder: (controller) {
         return Container(

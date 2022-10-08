@@ -18,10 +18,12 @@ void main() async {
   await Firebase.initializeApp();
   MainUser.getOrUpdateUserFromCache();
   // MainUser.getUserFromFirestoreAndUpdateModel();
+  await FirebaseMessaging.instance.setAutoInitEnabled(true);
   String? token = await FirebaseMessaging.instance.getToken();
   log("Token : $token?");
+  print("Token : $token?");
   FirebaseMessaging.onMessage.listen((event) {
-    print(" ============================== Notofication ====================");
+    print(" ============================== Notofication ================================");
     print(event);
   });
   runApp(const MyApp());

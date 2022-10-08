@@ -15,7 +15,7 @@ import 'package:psychic_helper/helper/main_user.dart';
 import 'package:psychic_helper/models/message_model.dart';
 import 'package:psychic_helper/models/user_model.dart';
 
-class ChatDetailsScreenLogic02 extends StatelessWidget {
+class ChatDetailsScreenLogic02 extends StatefulWidget {
   ChatDetailsScreenLogic02({
     Key? key,
     required this.model,
@@ -23,13 +23,24 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
   final UserModel model;
 
   @override
+  State<ChatDetailsScreenLogic02> createState() => _ChatDetailsScreenLogic02State();
+}
+
+class _ChatDetailsScreenLogic02State extends State<ChatDetailsScreenLogic02> {
+  late final ChatDetailsControllerLogic2 controller;
+  @override
+  void initState() {
+    controller = Get.put(ChatDetailsControllerLogic2(userModel : widget.model));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ChatDetailsControllerLogic2());
-    controller.init(model);
+    // controller.init(widget.model);
 
     return GetBuilder<ChatDetailsControllerLogic2>(
       builder: (controller) {
-        controller.stateOfPermission = controller.checkPermission(model);
+        controller.stateOfPermission = controller.checkPermission(widget.model);
         return Scaffold(
           appBar: AppBar(
             title: RichText(
@@ -37,7 +48,7 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: model.name,
+                    text: widget.model.name,
                     style: TextStyle(color: AppColor.grayColor, fontSize: 16),
                   ),
                   if (controller.stateOfPermission == 2)
@@ -57,7 +68,7 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
                                 onAccept: controller.loadingOfUpdatePermission
                                     ? null
                                     : () async {
-                                        controller.updatePermission(0, model);
+                                        controller.updatePermission(0, widget.model);
                                         Get.back();
                                       },
                                 onCancel: () {
@@ -96,7 +107,7 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
                         .collection("users")
                         .doc(MainUser.model!.uId)
                         .collection("chats")
-                        .doc(model.uId)
+                        .doc(widget.model.uId)
                         .collection("messages")
                         .orderBy("dateTime", descending: true),
                     builder: (context, FirestoreQueryBuilderSnapshot snapshot, _) {
@@ -162,7 +173,7 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
                                   );
                                 else
                                   return _BuildOtherMessage(
-                                    model: model,
+                                    model: widget.model,
                                     message: message.text!,
                                   );
                               },
@@ -192,7 +203,7 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
                                     text: "موافقة",
                                     buttonColor: Colors.green,
                                     onTap: () {
-                                      controller.updatePermission(0, model);
+                                      controller.updatePermission(0, widget.model);
                                     },
                                   ),
                                 ),
@@ -204,7 +215,7 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
                                     onTap: controller.loadingOfUpdatePermission
                                         ? null
                                         : () {
-                                            controller.updatePermission(2, model);
+                                            controller.updatePermission(2, widget.model);
                                           },
                                   ),
                                 ),
@@ -236,7 +247,7 @@ class ChatDetailsScreenLogic02 extends StatelessWidget {
                                 InkWell(
                                   onTap: () async {
                                     controller.sendMessage(
-                                      receiveId: model.uId!,
+                                      receiveId: widget.model.uId!,
                                       text: controller.textController.text,
                                       dateTime: DateTime.now().toIso8601String(),
                                     );

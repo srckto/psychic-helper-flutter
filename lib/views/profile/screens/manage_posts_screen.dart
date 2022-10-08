@@ -10,13 +10,12 @@ import 'package:psychic_helper/models/post_model.dart';
 import 'package:psychic_helper/views/profile/screens/edit_post_screen.dart';
 
 class ManagePostsScreen extends StatelessWidget {
-  const ManagePostsScreen({Key? key}) : super(key: key);
+  ManagePostsScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(ManagePostsController());
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final controller = Get.put(ManagePostsController());
-
     return Scaffold(
       appBar: AppBar(
         title: CustomText("ادارة المنشورات"),

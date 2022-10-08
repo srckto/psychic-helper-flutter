@@ -8,10 +8,10 @@ import 'package:psychic_helper/helper/app_color.dart';
 class LayoutScreen extends StatelessWidget {
   LayoutScreen({Key? key}) : super(key: key);
 
+  final controller = Get.put(LayoutController());
+
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final controller = Get.put(LayoutController());
     return GetBuilder<LayoutController>(
       builder: (controller) {
         return SafeArea(
@@ -59,4 +59,3 @@ class LayoutScreen extends StatelessWidget {
     );
   }
 }
-

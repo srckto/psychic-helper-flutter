@@ -6,22 +6,28 @@ import 'package:psychic_helper/models/post_model.dart';
 import 'package:psychic_helper/network/firestore_service.dart';
 
 class EditPostController extends GetxController {
-  late PostModel model;
+  final PostModel postModel;
+
+  EditPostController({required this.postModel});
 
   late TextEditingController title;
   late TextEditingController description;
 
   late bool isLoading;
 
-  void init(PostModel currentModel) {
+  @override
+  void onClose() {
+    title.dispose();
+    description.dispose();
+    super.onClose();
+  }
+
+  @override
+  void onInit() {
     isLoading = false;
-    model = currentModel;
-    title = TextEditingController(text: model.title);
-    description = TextEditingController(text: model.description);
-    print("========================== post");
-    print(model.title);
-    print(model.description);
-    print("========================== post");
+    title = TextEditingController(text: postModel.title);
+    description = TextEditingController(text: postModel.description);
+    super.onInit();
   }
 
   Future<void> deletePost(String id) async {
@@ -41,10 +47,10 @@ class EditPostController extends GetxController {
       update();
 
       PostModel newModel = PostModel(
-        id: model.id,
-        image: model.image,
-        postedBy: model.postedBy,
-        dataTimeOfPosts: model.dataTimeOfPosts,
+        id: postModel.id,
+        image: postModel.image,
+        postedBy: postModel.postedBy,
+        dataTimeOfPosts: postModel.dataTimeOfPosts,
         title: title.text,
         description: description.text,
       );

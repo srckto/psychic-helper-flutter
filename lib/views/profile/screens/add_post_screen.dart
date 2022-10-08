@@ -9,12 +9,12 @@ import 'package:psychic_helper/helper/app_color.dart';
 import 'package:psychic_helper/helper/main_user.dart';
 
 class AddPostScreen extends StatelessWidget {
-  const AddPostScreen({Key? key}) : super(key: key);
+  AddPostScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(AddPostController());
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(AddPostController());
-
     return Scaffold(
       appBar: AppBar(
         title: CustomText("اضافة منشور"),
@@ -55,7 +55,6 @@ class AddPostScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 15),
-                    
                   ],
                 ),
               CustomCard(

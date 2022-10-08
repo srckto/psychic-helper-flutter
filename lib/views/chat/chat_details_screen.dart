@@ -14,21 +14,32 @@ import 'package:psychic_helper/helper/app_color.dart';
 import 'package:psychic_helper/helper/main_user.dart';
 import 'package:psychic_helper/models/user_model.dart';
 
-class ChatDetailsScreen extends StatelessWidget {
-  const ChatDetailsScreen({
+class ChatDetailsScreen extends StatefulWidget {
+  ChatDetailsScreen({
     Key? key,
     required this.model,
   }) : super(key: key);
   final UserModel model;
 
   @override
+  State<ChatDetailsScreen> createState() => _ChatDetailsScreenState();
+}
+
+class _ChatDetailsScreenState extends State<ChatDetailsScreen> {
+  late final ChatDetailsController controller;
+  @override
+  void initState() {
+    controller = Get.put(ChatDetailsController(userModel: widget.model));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ChatDetailsController());
-    controller.init(model);
+    // controller.init(model);
 
     return GetBuilder<ChatDetailsController>(
       builder: (controller) {
-        controller.stateOfPermission = controller.checkPermission(model);
+        controller.stateOfPermission = controller.checkPermission(widget.model);
         return Scaffold(
           appBar: AppBar(
             title: RichText(
@@ -36,7 +47,7 @@ class ChatDetailsScreen extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: model.name,
+                    text: widget.model.name,
                     style: TextStyle(color: AppColor.grayColor, fontSize: 16),
                   ),
                   if (controller.stateOfPermission == 2)
@@ -56,7 +67,7 @@ class ChatDetailsScreen extends StatelessWidget {
                                 onAccept: controller.loadingOfUpdatePermission
                                     ? null
                                     : () async {
-                                        controller.updatePermission(0, model);
+                                        controller.updatePermission(0, widget.model);
                                         Get.back();
                                       },
                                 onCancel: () {
@@ -143,7 +154,7 @@ class ChatDetailsScreen extends StatelessWidget {
                               );
                             else
                               return _BuildOtherMessage(
-                                model: model,
+                                model: widget.model,
                                 message: controller.messages[index].text!,
                               );
                           },
@@ -171,7 +182,7 @@ class ChatDetailsScreen extends StatelessWidget {
                                     text: "موافقة",
                                     buttonColor: Colors.green,
                                     onTap: () {
-                                      controller.updatePermission(0, model);
+                                      controller.updatePermission(0, widget.model);
                                     },
                                   ),
                                 ),
@@ -183,7 +194,7 @@ class ChatDetailsScreen extends StatelessWidget {
                                     onTap: controller.loadingOfUpdatePermission
                                         ? null
                                         : () {
-                                            controller.updatePermission(2, model);
+                                            controller.updatePermission(2, widget.model);
                                           },
                                   ),
                                 ),
@@ -215,7 +226,7 @@ class ChatDetailsScreen extends StatelessWidget {
                                 InkWell(
                                   onTap: () async {
                                     controller.sendMessage(
-                                      receiveId: model.uId!,
+                                      receiveId: widget.model.uId!,
                                       text: controller.textController.text,
                                       dateTime: DateTime.now().toIso8601String(),
                                     );

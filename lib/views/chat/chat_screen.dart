@@ -8,17 +8,14 @@ import 'package:psychic_helper/components/empty_screen.dart';
 import 'package:psychic_helper/controllers/chat/chat_controller.dart';
 import 'package:psychic_helper/helper/app_color.dart';
 import 'package:psychic_helper/models/user_model.dart';
-import 'package:psychic_helper/views/chat/chat_details_screen.dart';
 import 'package:psychic_helper/views/chat/chat_details_screen_logic02.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({Key? key}) : super(key: key);
-
+  ChatScreen({Key? key}) : super(key: key);
+  final controller = Get.put(ChatController());
+  
   @override
-  Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final controller = Get.put(ChatController());
-
+  Widget build(BuildContext context) {   
     return Container(
       width: Get.width,
       padding: EdgeInsets.all(20),

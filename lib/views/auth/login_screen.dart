@@ -11,13 +11,12 @@ import 'package:psychic_helper/helper/functions.dart';
 import 'package:psychic_helper/views/auth/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
+  
+  final controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
-    
-    final controller = Get.put(LoginController());
-
     return SafeArea(
       child: Scaffold(
         body: Container(

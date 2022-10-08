@@ -9,17 +9,29 @@ import 'package:psychic_helper/controllers/profile/edit_post_controller.dart';
 import 'package:psychic_helper/helper/app_color.dart';
 import 'package:psychic_helper/models/post_model.dart';
 
-class EditPostScreen extends StatelessWidget {
-  const EditPostScreen({
+class EditPostScreen extends StatefulWidget {
+  EditPostScreen({
     required this.model,
     Key? key,
   }) : super(key: key);
   final PostModel model;
 
   @override
+  State<EditPostScreen> createState() => _EditPostScreenState();
+}
+
+class _EditPostScreenState extends State<EditPostScreen> {
+  late final EditPostController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(EditPostController(postModel: widget.model));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put(EditPostController());
-    controller.init(model);
+    // controller.init(model);
 
     return Scaffold(
       appBar: AppBar(
@@ -44,7 +56,7 @@ class EditPostScreen extends StatelessWidget {
                     textOfAccept: "حذف",
                     textOfCancel: 'الغاء',
                     onAccept: () async {
-                      await controller.deletePost(model.id!);
+                      await controller.deletePost(widget.model.id!);
                       Get.back();
                     },
                     onCancel: () {

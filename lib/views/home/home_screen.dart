@@ -9,12 +9,12 @@ import 'package:psychic_helper/models/post_model.dart';
 import 'package:psychic_helper/views/home/post_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final controller = Get.put(HomeController());
     return GetBuilder<HomeController>(
       builder: (controller) {
         if (controller.isLoading) return Center(child: CircularProgressIndicator());

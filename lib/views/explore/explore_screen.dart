@@ -8,13 +8,12 @@ import 'package:psychic_helper/helper/app_color.dart';
 import 'package:psychic_helper/views/explore/result_explore_screen.dart';
 
 class ExploreScreen extends StatelessWidget {
-  const ExploreScreen({Key? key}) : super(key: key);
+  ExploreScreen({Key? key}) : super(key: key);
+  
+  final controller = Get.put(ExploreController());
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final controller = Get.put(ExploreController());
-
     return Container(
       height: Get.height,
       alignment: Alignment.center,

@@ -14,6 +14,8 @@ import 'package:psychic_helper/network/firestore_service.dart';
 import 'package:psychic_helper/network/message_service.dart';
 
 class ChatDetailsController extends GetxController {
+  final UserModel userModel;
+  ChatDetailsController({required this.userModel});
   late List<MessageModel> messages;
   late bool isLoading;
   late TextEditingController textController;
@@ -23,17 +25,31 @@ class ChatDetailsController extends GetxController {
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>>? showMessageStream;
   StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? messageStream;
 
-  void init(UserModel otherUserModel) {
+  @override
+  void onInit() {
     messages = [];
     isLoading = true;
     update();
     textController = TextEditingController();
-    stateOfPermission = checkPermission(otherUserModel);
+    stateOfPermission = checkPermission(userModel);
     loadingOfUpdatePermission = false;
-    messageStream = getMessages(receiveId: otherUserModel.uId!);
-    showMessageStream = checkShowMessages(otherUserModel.uId!);
+    messageStream = getMessages(receiveId: userModel.uId!);
+    showMessageStream = checkShowMessages(userModel.uId!);
     update();
+    super.onInit();
   }
+
+  // void init(UserModel otherUserModel) {
+  //   messages = [];
+  //   isLoading = true;
+  //   update();
+  //   textController = TextEditingController();
+  //   stateOfPermission = checkPermission(otherUserModel);
+  //   loadingOfUpdatePermission = false;
+  //   messageStream = getMessages(receiveId: otherUserModel.uId!);
+  //   showMessageStream = checkShowMessages(otherUserModel.uId!);
+  //   update();
+  // }
 
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>> checkShowMessages(String receiveId) {
     return FirebaseFirestore.instance

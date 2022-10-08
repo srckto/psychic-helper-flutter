@@ -10,13 +10,12 @@ import 'package:psychic_helper/models/user_model.dart';
 import 'package:psychic_helper/views/chat/chat_details_screen_logic02.dart';
 
 class ResultExploreScreen extends StatelessWidget {
-  const ResultExploreScreen({Key? key}) : super(key: key);
+  ResultExploreScreen({Key? key}) : super(key: key);
+
+  final controller = Get.put(ResultExploreController());
 
   @override
   Widget build(BuildContext context) {
-    // ignore: unused_local_variable
-    final controller = Get.put(ResultExploreController());
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
