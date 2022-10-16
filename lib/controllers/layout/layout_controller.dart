@@ -59,11 +59,10 @@ class LayoutController extends GetxController {
   }
 
   Future<void> logout() async {
-    await MainUser.userStream!.cancel();
-    MainUser.userStream == null;
+    await MainUser.userStream?.cancel();
 
     await FirebaseAuth.instance.signOut();
-    CacheStorage.remove(CACHE_USER);
+    await CacheStorage.remove(CACHE_USER);
 
     Get.find<ChatController>().chatSteam?.cancel();
 

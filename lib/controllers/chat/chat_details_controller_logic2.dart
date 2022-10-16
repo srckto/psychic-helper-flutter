@@ -50,7 +50,7 @@ class ChatDetailsControllerLogic2 extends GetxController {
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>> checkShowMessages(String receiveId) {
     return FirebaseFirestore.instance
         .collection("users")
-        .doc(MainUser.model!.uId)
+        .doc(MainUser.model?.uId)
         .collection("chats")
         .doc(receiveId)
         .snapshots()
@@ -172,10 +172,10 @@ class ChatDetailsControllerLogic2 extends GetxController {
   Future<void> checkIfTheUserFoundInMyConnectionsAndUpdate(String receiveId) async {
     // bool found = false;
     MyConnectionModel? checkConnection =
-        MainUser.model!.myConnection!.firstWhereOrNull((element) => element.id == receiveId);
+        MainUser.model?.myConnection?.firstWhereOrNull((element) => element.id == receiveId);
 
     if (checkConnection == null) {
-      MainUser.model!.myConnection!.add(
+      MainUser.model?.myConnection?.add(
         MyConnectionModel(
           id: receiveId,
           state: MainUser.model!.isPerson! ? 0 : 0,
