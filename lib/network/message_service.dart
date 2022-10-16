@@ -69,7 +69,7 @@ class MessageService {
         .collection("chats")
         .doc(receiveId)
         .set({
-      "dateTime": DateTime.now().toString(),
+      "dateTime": DateTime.now().microsecondsSinceEpoch.toString(),
       "lastMessage": messageModel.text,
       "isShowLastMessage": true,
       "uId": receiveId,
@@ -86,7 +86,7 @@ class MessageService {
         .collection("chats")
         .doc(MainUser.model!.uId)
         .set({
-      "dateTime": DateTime.now().toString(),
+      "dateTime": DateTime.now().microsecondsSinceEpoch.toString(),
       "lastMessage": messageModel.text,
       "isShowLastMessage": false,
       "uId": MainUser.model?.uId,
