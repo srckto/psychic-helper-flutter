@@ -5,7 +5,7 @@
 - Language: Arabic.
 - Auth < Register, Login >.
 - Two account type < person , doctor >.
-- ** doctor account feature < add , delete , update > post.
+- ** doctor account features < add , delete , update > post.
 - Search doctors accounts.
 
 ## Chat feature:
