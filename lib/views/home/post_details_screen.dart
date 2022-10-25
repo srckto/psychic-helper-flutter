@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:psychic_helper/components/build_image.dart';
 import 'package:psychic_helper/components/custom_text.dart';
+import 'package:psychic_helper/controllers/home/post_details_controller.dart';
 import 'package:psychic_helper/helper/app_color.dart';
 
 import 'package:psychic_helper/models/post_model.dart';
 
-class PostDetailsScreen extends StatelessWidget {
+class PostDetailsScreen extends StatefulWidget {
   const PostDetailsScreen({
     Key? key,
     required this.model,
   }) : super(key: key);
 
   final PostModel model;
+
+  @override
+  State<PostDetailsScreen> createState() => _PostDetailsScreenState();
+}
+
+class _PostDetailsScreenState extends State<PostDetailsScreen> {
+  late PostDetailsController controller;
+  @override
+  void initState() {
+    controller = Get.put(PostDetailsController(postModel: widget.model));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +36,7 @@ class PostDetailsScreen extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: CustomText(
-              model.title!,
+              controller.postModel.title!,
               maxLines: 1,
             ),
           ),
@@ -45,25 +59,31 @@ class PostDetailsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BuildImage(imageUrl: model.image!),
+                BuildImage(imageUrl: controller.postModel.image!),
                 SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomText(
-                        model.title!,
+                        controller.postModel.title!,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                         textAlign: TextAlign.start,
                       ),
                       SizedBox(height: 5),
-                      CustomText(
-                        model.description!,
-                        fontSize: 16,
-                        textAlign: TextAlign.start,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      controller.body == null
+                          ? QuillEditor.basic(
+                              controller: controller.quillController!,
+                              readOnly: true, // true for view only mode
+                            )
+                          : CustomText(
+                              controller.body ?? "",
+                              fontSize: 16,
+                              textAlign: TextAlign.start,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                     ],
                   ),
                 ),

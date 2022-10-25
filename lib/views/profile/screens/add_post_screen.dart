@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:psychic_helper/components/custom_button.dart';
 import 'package:psychic_helper/components/custom_card.dart';
@@ -68,12 +69,29 @@ class AddPostScreen extends StatelessWidget {
                         prefixIcon: Icon(Icons.title_outlined),
                       ),
                       Divider(),
-                      CustomFormField(
-                        labelText: "الوصف",
-                        controller: controller.description,
-                        prefixIcon: Icon(Icons.description_outlined),
-                        maxLines: 5,
+                      Container(
+                        height: 250,
+                        child: QuillEditor.basic(
+                          controller: controller.quillController,
+                          readOnly: false,
+                        ),
                       ),
+                      QuillToolbar.basic(
+                        controller: controller.quillController,
+                        showFontSize: false,
+                        showFontFamily: false,
+                        showSearchButton: false,
+                        showBackgroundColorButton: false,
+                        showDividers: false,
+                        // showJustifyAlignment: false,
+                        showStrikeThrough: false,
+                      ),
+                      // CustomFormField(
+                      //   labelText: "الوصف",
+                      //   controller: controller.description,
+                      //   prefixIcon: Icon(Icons.description_outlined),
+                      //   maxLines: 5,
+                      // ),
                     ],
                   ),
                 ),

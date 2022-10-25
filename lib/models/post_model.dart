@@ -1,27 +1,30 @@
 class PostModel {
   String? id;
   String? title;
-  String? description;
+  String? jsonDescription;
   String? image;
   String? postedBy;
   String? dataTimeOfPosts;
+  String? stringDescription;
   PostModel({
     this.id,
     this.title,
-    this.description,
+    this.jsonDescription,
     this.image,
     this.postedBy,
     this.dataTimeOfPosts,
+    this.stringDescription,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'title': title,
-      'description': description,
+      'jsonDescription': jsonDescription,
       'image': image,
       'postedBy': postedBy,
       'dataTimeOfPosts': dataTimeOfPosts,
+      'stringDescription': stringDescription,
     };
   }
 
@@ -29,7 +32,8 @@ class PostModel {
     return PostModel(
       id: map['id'],
       title: map['title'],
-      description: map['description'],
+      jsonDescription: map['jsonDescription'],
+      stringDescription: map['stringDescription'],
       image: map['image'],
       postedBy: map['postedBy'],
       dataTimeOfPosts: map['dataTimeOfPosts'],

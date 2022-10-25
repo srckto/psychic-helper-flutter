@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -17,15 +14,6 @@ void main() async {
   await GetStorage.init();
   await Firebase.initializeApp();
   MainUser.getOrUpdateUserFromCache();
-  // MainUser.getUserFromFirestoreAndUpdateModel();
-  await FirebaseMessaging.instance.setAutoInitEnabled(true);
-  String? token = await FirebaseMessaging.instance.getToken();
-  log("Token : $token?");
-  print("Token : $token?");
-  FirebaseMessaging.onMessage.listen((event) {
-    print(" ============================== Notofication ================================");
-    print(event);
-  });
   runApp(const MyApp());
 }
 

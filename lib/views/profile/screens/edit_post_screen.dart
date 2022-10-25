@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:psychic_helper/components/custom_alert_dialog.dart';
 import 'package:psychic_helper/components/custom_button.dart';
@@ -31,8 +32,6 @@ class _EditPostScreenState extends State<EditPostScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // controller.init(model);
-
     return Scaffold(
       appBar: AppBar(
         title: CustomText("تعديل المنشور"),
@@ -92,12 +91,34 @@ class _EditPostScreenState extends State<EditPostScreen> {
                         prefixIcon: Icon(Icons.title_outlined),
                       ),
                       Divider(),
-                      CustomFormField(
-                        labelText: "الوصف",
-                        controller: controller.description,
-                        prefixIcon: Icon(Icons.description_outlined),
-                        maxLines: 15,
-                      ),
+                      controller.quillController != null
+                          ? Column(
+                              children: [
+                                Container(
+                                  height: 250,
+                                  child: QuillEditor.basic(
+                                    controller: controller.quillController!,
+                                    readOnly: false,
+                                  ),
+                                ),
+                                QuillToolbar.basic(
+                                  controller: controller.quillController!,
+                                  showFontSize: false,
+                                  showFontFamily: false,
+                                  showSearchButton: false,
+                                  showBackgroundColorButton: false,
+                                  showDividers: false,
+                                  // showJustifyAlignment: false,
+                                  showStrikeThrough: false,
+                                ),
+                              ],
+                            )
+                          : CustomFormField(
+                              labelText: "الوصف",
+                              controller: controller.description,
+                              prefixIcon: Icon(Icons.description_outlined),
+                              maxLines: 15,
+                            ),
                     ],
                   ),
                 ),
