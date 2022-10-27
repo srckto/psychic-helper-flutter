@@ -1,5 +1,6 @@
 # psychic_helper
 
+## Features
 - Platform : Android.
 - Back-end: Firebase.
 - Language: Arabic.
@@ -7,7 +8,8 @@
 - Two account type < person , doctor >.
 - ** doctor account features < add , delete , update > post.
 - Search doctors accounts.
-- Delete account < all data, chats, posts >
+- Delete account < all data, chats, posts >.
+- Text editor to write description of posts.
 
 ## Chat feature:
 - Only my connection appears on a chat screen.
