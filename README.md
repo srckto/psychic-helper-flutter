@@ -7,6 +7,7 @@
 - Two account type < person , doctor >.
 - ** doctor account features < add , delete , update > post.
 - Search doctors accounts.
+- Delete account < all data, chats, posts >
 
 ## Chat feature:
 - Only my connection appears on a chat screen.
