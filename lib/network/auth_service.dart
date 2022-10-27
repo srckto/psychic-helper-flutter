@@ -36,4 +36,8 @@ class AuthService {
       throw e;
     }
   }
+
+  Future<void> restPassword(String email) async {
+    return await _auth.sendPasswordResetEmail(email: email);
+  }
 }

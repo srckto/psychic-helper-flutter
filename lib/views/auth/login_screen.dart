@@ -8,6 +8,7 @@ import 'package:psychic_helper/components/custom_text.dart';
 import 'package:psychic_helper/controllers/auth/login_controller.dart';
 import 'package:psychic_helper/helper/app_color.dart';
 import 'package:psychic_helper/helper/functions.dart';
+import 'package:psychic_helper/views/auth/forgot_password_screen.dart';
 import 'package:psychic_helper/views/auth/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -89,6 +90,30 @@ class LoginScreen extends StatelessWidget {
                               ..onTap = () {
                                 print("object");
                                 Get.off(() => RegisterScreen());
+                              },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "نسيت كلمة السر؟",
+                            style: TextStyle(color: AppColors.grayColor, fontSize: 16),
+                          ),
+                          TextSpan(
+                            text: " اعادة تعيين كلمة السر",
+                            style: TextStyle(color: AppColors.primaryColor, fontSize: 16),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("object");
+                                Get.to(() => ForgotPasswordScreen());
                               },
                           ),
                         ],
