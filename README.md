@@ -9,7 +9,7 @@
 - ** doctor account features < add , delete , update > post.
 - Search doctors accounts.
 - Delete account < all data, chats, posts >.
-- Text editor to write description of posts.
+- Text editor to write the description of the post.
 
 ## Chat feature:
 - Only my connection appears on a chat screen.
