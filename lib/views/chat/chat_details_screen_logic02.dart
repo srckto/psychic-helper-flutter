@@ -30,7 +30,7 @@ class _ChatDetailsScreenLogic02State extends State<ChatDetailsScreenLogic02> {
   late final ChatDetailsControllerLogic2 controller;
   @override
   void initState() {
-    controller = Get.put(ChatDetailsControllerLogic2(userModel : widget.model));
+    controller = Get.put(ChatDetailsControllerLogic2(userModel: widget.model));
     super.initState();
   }
 
@@ -49,12 +49,12 @@ class _ChatDetailsScreenLogic02State extends State<ChatDetailsScreenLogic02> {
                 children: [
                   TextSpan(
                     text: widget.model.name,
-                    style: TextStyle(color: AppColor.grayColor, fontSize: 16),
+                    style: TextStyle(color: AppColors.grayColor, fontSize: 16),
                   ),
                   if (controller.stateOfPermission == 2)
                     TextSpan(
                       text: "  (محظور)  ",
-                      style: TextStyle(color: AppColor.primaryColor, fontSize: 16),
+                      style: TextStyle(color: AppColors.primaryColor, fontSize: 16),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () async {
                           return showDialog(
@@ -91,7 +91,7 @@ class _ChatDetailsScreenLogic02State extends State<ChatDetailsScreenLogic02> {
               },
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: AppColor.primaryColor,
+                color: AppColors.primaryColor,
               ),
             ),
           ),
@@ -255,7 +255,7 @@ class _ChatDetailsScreenLogic02State extends State<ChatDetailsScreenLogic02> {
                                   },
                                   child: Icon(
                                     (Icons.send_rounded),
-                                    color: AppColor.primaryColor,
+                                    color: AppColors.primaryColor,
                                   ),
                                 ),
                               ],
@@ -340,7 +340,7 @@ class _BuildMyMessage extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
             decoration: BoxDecoration(
-              color: AppColor.primaryColor.withOpacity(0.7),
+              color: AppColors.primaryColor.withOpacity(0.7),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),

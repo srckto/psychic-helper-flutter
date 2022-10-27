@@ -12,9 +12,9 @@ import 'package:psychic_helper/views/auth/login_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({Key? key}) : super(key: key);
-  
+
   final controller = Get.put(RegisterController());
-  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -89,7 +89,7 @@ class RegisterScreen extends StatelessWidget {
                     builder: (controller) {
                       return CustomCard(
                         height: 50,
-                        color: AppColor.fontGrayColor,
+                        color: AppColors.fontGrayColor,
                         child: Row(
                           children: List.generate(
                             controller.accountType.length,
@@ -102,7 +102,7 @@ class RegisterScreen extends StatelessWidget {
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                     color: controller.indexOfAccountType == index
-                                        ? AppColor.primaryColor
+                                        ? AppColors.primaryColor
                                         : Colors.transparent,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -142,7 +142,7 @@ class RegisterScreen extends StatelessWidget {
                                 controller.createAccount();
                               },
                         text: "انشاء حساب",
-                        buttonColor: controller.isLoading ? Colors.brown : AppColor.primaryColor,
+                        buttonColor: controller.isLoading ? Colors.brown : AppColors.primaryColor,
                       );
                     },
                   ),
@@ -155,20 +155,20 @@ class RegisterScreen extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: "من خلال إنشاء حساب ، فإنك توافق على ",
-                            style: TextStyle(color: AppColor.grayColor),
+                            style: TextStyle(color: AppColors.grayColor),
                           ),
                           TextSpan(
                             text: "شروط الخدمة",
-                            style: TextStyle(color: AppColor.primaryColor),
+                            style: TextStyle(color: AppColors.primaryColor),
                             recognizer: TapGestureRecognizer()..onTap = () {},
                           ),
                           TextSpan(
                             text: " و ",
-                            style: TextStyle(color: AppColor.grayColor),
+                            style: TextStyle(color: AppColors.grayColor),
                           ),
                           TextSpan(
                             text: "سياسة الخصوصية",
-                            style: TextStyle(color: AppColor.primaryColor),
+                            style: TextStyle(color: AppColors.primaryColor),
                             recognizer: TapGestureRecognizer()..onTap = () {},
                           ),
                         ],
@@ -184,11 +184,11 @@ class RegisterScreen extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: "لديك حساب بالفعل؟ ",
-                            style: TextStyle(color: AppColor.grayColor, fontSize: 16),
+                            style: TextStyle(color: AppColors.grayColor, fontSize: 16),
                           ),
                           TextSpan(
                             text: "تسجيل الدخول",
-                            style: TextStyle(color: AppColor.primaryColor, fontSize: 16),
+                            style: TextStyle(color: AppColors.primaryColor, fontSize: 16),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 print("object");

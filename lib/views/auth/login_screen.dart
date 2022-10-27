@@ -12,7 +12,7 @@ import 'package:psychic_helper/views/auth/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
-  
+
   final controller = Get.put(LoginController());
 
   @override
@@ -67,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                                 controller.login();
                               },
                         text: "تسجيل الدخول",
-                        buttonColor: controller.isLoading ? Colors.brown : AppColor.primaryColor,
+                        buttonColor: controller.isLoading ? Colors.brown : AppColors.primaryColor,
                       );
                     },
                   ),
@@ -80,11 +80,11 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: "ليس لديك حساب؟",
-                            style: TextStyle(color: AppColor.grayColor, fontSize: 16),
+                            style: TextStyle(color: AppColors.grayColor, fontSize: 16),
                           ),
                           TextSpan(
                             text: " انشاء حساب جديد.",
-                            style: TextStyle(color: AppColor.primaryColor, fontSize: 16),
+                            style: TextStyle(color: AppColors.primaryColor, fontSize: 16),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 print("object");

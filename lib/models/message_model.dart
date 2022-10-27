@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class MessageModel extends Equatable {
+class MessageModel {
   String? id;
   String? senderId;
   String? receiveId;
@@ -37,7 +35,4 @@ class MessageModel extends Equatable {
       isDeleted: map['isDeleted'] ?? false,
     );
   }
-  
-  @override
-  List<Object?> get props => [id];
 }

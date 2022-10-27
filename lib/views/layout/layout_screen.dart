@@ -41,8 +41,8 @@ class LayoutScreen extends StatelessWidget {
               currentIndex: controller.index,
               backgroundColor: Colors.white,
               onTap: controller.onChange,
-              selectedItemColor: AppColor.primaryColor,
-              unselectedItemColor: AppColor.grayColor,
+              selectedItemColor: AppColors.primaryColor,
+              unselectedItemColor: AppColors.grayColor,
               selectedFontSize: 12,
               items: controller.items
                   .map(

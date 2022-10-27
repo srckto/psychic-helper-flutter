@@ -25,7 +25,7 @@ class ResultExploreScreen extends StatelessWidget {
             onPressed: () => Get.back(),
             icon: Icon(
               Icons.arrow_back_ios,
-              color: AppColor.primaryColor,
+              color: AppColors.primaryColor,
             ),
           ),
         ),

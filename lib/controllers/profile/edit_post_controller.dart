@@ -45,7 +45,7 @@ class EditPostController extends GetxController {
         selection: TextSelection.collapsed(offset: 0),
       );
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -56,7 +56,7 @@ class EditPostController extends GetxController {
       Get.find<HomeController>().onInit();
       Get.back();
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -100,7 +100,7 @@ class EditPostController extends GetxController {
     } catch (e) {
       isLoading = false;
       update();
-      print(e.toString());
+      debugPrint(e.toString());
       Get.closeCurrentSnackbar();
       Get.snackbar(
         "خطأ",

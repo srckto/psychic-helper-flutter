@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:psychic_helper/helper/main_user.dart';
 
 class AuthService {
   AuthService._();
@@ -23,5 +24,16 @@ class AuthService {
       email: email,
       password: password,
     );
+  }
+
+  Future<void> deleteAccount(String password) async {
+    try {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: MainUser.model!.email!, password: password);
+      await _auth.currentUser?.reauthenticateWithCredential(credential);
+      await _auth.currentUser?.delete();
+    } catch (e) {
+      throw e;
+    }
   }
 }

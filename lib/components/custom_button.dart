@@ -5,8 +5,8 @@ import 'package:psychic_helper/helper/app_color.dart';
 class CustomButton extends StatelessWidget {
   CustomButton({
     required this.text,
-    this.buttonColor = AppColor.primaryColor,
-    this.shadowColor = AppColor.primaryColor,
+    this.buttonColor = AppColors.primaryColor,
+    this.shadowColor = AppColors.primaryColor,
     this.onTap,
     this.height = 46,
     this.width,

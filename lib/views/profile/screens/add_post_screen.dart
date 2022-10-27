@@ -24,7 +24,7 @@ class AddPostScreen extends StatelessWidget {
           onPressed: () => Get.back(),
           icon: Icon(
             Icons.arrow_back_ios,
-            color: AppColor.primaryColor,
+            color: AppColors.primaryColor,
           ),
         ),
       ),
@@ -43,7 +43,7 @@ class AddPostScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 17),
                       height: 60,
                       decoration: BoxDecoration(
-                        color: AppColor.primaryColor,
+                        color: AppColors.primaryColor,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Center(
@@ -106,7 +106,7 @@ class AddPostScreen extends StatelessWidget {
                             controller.addPost();
                           },
                     text: "نشر",
-                    buttonColor: controller.isLoading ? Colors.brown : AppColor.primaryColor,
+                    buttonColor: controller.isLoading ? Colors.brown : AppColors.primaryColor,
                   );
                 },
               ),

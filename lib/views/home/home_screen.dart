@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:psychic_helper/components/build_image.dart';
 import 'package:psychic_helper/components/build_post_item.dart';
-import 'package:psychic_helper/components/custom_card.dart';
 
-import 'package:psychic_helper/components/custom_text.dart';
 import 'package:psychic_helper/controllers/home/home_controller.dart';
-import 'package:psychic_helper/models/post_model.dart';
 import 'package:psychic_helper/views/home/post_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {

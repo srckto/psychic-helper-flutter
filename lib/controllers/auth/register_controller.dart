@@ -54,11 +54,7 @@ class RegisterController extends GetxController {
       isLoading = false;
       update();
 
-      // Get.find<LayoutController>().onInit();
-      // Get.find<HomeController>().onInit();
-      // Get.find<ExploreController>().onInit();
-      // Get.find<ChatController>().onInit();
-      // Get.find<ProfileController>().onInit();
+
       Get.offAll(() => LayoutScreen());
     } on FirebaseAuthException catch (error) {
       isLoading = false;

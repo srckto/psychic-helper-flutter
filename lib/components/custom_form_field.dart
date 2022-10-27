@@ -42,7 +42,7 @@ class CustomFormField extends StatelessWidget {
         ),
         hintText: hintText,
         hintStyle: TextStyle(
-          color: AppColor.fontGrayColor,
+          color: AppColors.fontGrayColor,
         ),
         prefixIcon: prefixIcon,
         border: InputBorder.none,

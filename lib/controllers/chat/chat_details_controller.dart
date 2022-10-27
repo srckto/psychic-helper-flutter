@@ -39,18 +39,6 @@ class ChatDetailsController extends GetxController {
     super.onInit();
   }
 
-  // void init(UserModel otherUserModel) {
-  //   messages = [];
-  //   isLoading = true;
-  //   update();
-  //   textController = TextEditingController();
-  //   stateOfPermission = checkPermission(otherUserModel);
-  //   loadingOfUpdatePermission = false;
-  //   messageStream = getMessages(receiveId: otherUserModel.uId!);
-  //   showMessageStream = checkShowMessages(otherUserModel.uId!);
-  //   update();
-  // }
-
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>> checkShowMessages(String receiveId) {
     return FirebaseFirestore.instance
         .collection("users")
@@ -61,7 +49,7 @@ class ChatDetailsController extends GetxController {
         .listen(
       (event) {
         if (event.data() != null || event.data()?["isShowLastMessage"] != null) {
-          print(event.reference.id);
+          debugPrint(event.reference.id);
           event.reference.update({
             "isShowLastMessage": true,
           });
@@ -114,7 +102,7 @@ class ChatDetailsController extends GetxController {
       if (id != null) await _sendOtherMessage(receiveId, messageModel, id);
     } catch (e) {
       CustomToast.show("فشل بارسال الرسالة", Colors.red);
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -152,7 +140,7 @@ class ChatDetailsController extends GetxController {
     } catch (e) {
       loadingOfUpdatePermission = false;
       update();
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -164,7 +152,7 @@ class ChatDetailsController extends GetxController {
       selectConnection.state = permissionState;
       await FirestoreService.instance.updateUser(model);
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -180,7 +168,7 @@ class ChatDetailsController extends GetxController {
         idOfDocument,
       );
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -191,7 +179,7 @@ class ChatDetailsController extends GetxController {
       id = documentReference.id;
       await documentReference.update({"id": documentReference.id});
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
     return id;
   }
@@ -254,7 +242,7 @@ class ChatDetailsController extends GetxController {
       await MessageService.instance.deleteSingleMessageFromMe(newModel, receiveId);
       await MessageService.instance.deleteSingleMessageFromOtherSide(newModel, receiveId);
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 }

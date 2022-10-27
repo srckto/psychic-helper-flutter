@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
       title: "Psychic Helper",
       theme: ThemeData(
         fontFamily: "Tajawal",
-        primarySwatch: AppColor.primaryColor,
-        canvasColor: AppColor.canvasColor,
+        primarySwatch: AppColors.primaryColor,
+        canvasColor: AppColors.canvasColor,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0.0,

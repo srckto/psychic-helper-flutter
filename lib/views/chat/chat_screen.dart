@@ -13,9 +13,9 @@ import 'package:psychic_helper/views/chat/chat_details_screen_logic02.dart';
 class ChatScreen extends StatelessWidget {
   ChatScreen({Key? key}) : super(key: key);
   final controller = Get.put(ChatController());
-  
+
   @override
-  Widget build(BuildContext context) {   
+  Widget build(BuildContext context) {
     return Container(
       width: Get.width,
       padding: EdgeInsets.all(20),
@@ -117,7 +117,7 @@ class _BuildUserItem extends StatelessWidget {
                       model.name!,
                       fontSize: 20,
                       maxLines: 1,
-                      color: AppColor.grayColor,
+                      color: AppColors.grayColor,
                       textAlign: TextAlign.start,
                       fontWeight: FontWeight.w500,
                     ),
@@ -125,7 +125,7 @@ class _BuildUserItem extends StatelessWidget {
                       lastMessage,
                       fontSize: 18,
                       maxLines: 1,
-                      color: isShowLastMessage! ? AppColor.fontGrayColor : Colors.black,
+                      color: isShowLastMessage! ? AppColors.fontGrayColor : Colors.black,
                       textAlign: TextAlign.start,
                       fontWeight: !isShowLastMessage! ? FontWeight.bold : null,
                       // fontWeight: FontWeight.bold,

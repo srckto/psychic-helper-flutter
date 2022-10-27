@@ -39,14 +39,6 @@ class LoginController extends GetxController {
       isLoading = false;
       update();
 
-      // MainUser.userStream;
-
-      // Get.find<LayoutController>().onInit();
-      // Get.delete<ChatController>(force: true);
-      // Get.find<HomeController>().onInit();
-      // Get.find<ExploreController>().onInit();
-      // // Get.find<ChatController>().onInit();
-      // Get.find<ProfileController>().onInit();
       Get.offAll(() => LayoutScreen());
       Get.delete<LoginController>(force: true);
       Get.delete<RegisterController>(force: true);
@@ -66,7 +58,7 @@ class LoginController extends GetxController {
     } catch (error) {
       isLoading = false;
       update();
-      print(error.toString());
+      debugPrint(error.toString());
       Get.closeAllSnackbars();
       Get.snackbar(
         "Something is wrong!",

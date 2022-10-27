@@ -16,6 +16,10 @@ class FirestoreService {
     await _db.collection("users").doc(model.uId).set(model.toMap());
   }
 
+  Future<void> deleteUser(UserModel model) async {
+    await _db.collection("users").doc(model.uId).delete();
+  }
+
   Future<QuerySnapshot<Map<String, dynamic>>> getUsers() async {
     return await _db.collection("users").get();
   }

@@ -17,7 +17,7 @@ class BackgroundGradient extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             Colors.white,
-            AppColor.canvasColor,
+            AppColors.canvasColor,
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,

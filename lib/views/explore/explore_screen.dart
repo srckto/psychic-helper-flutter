@@ -9,7 +9,7 @@ import 'package:psychic_helper/views/explore/result_explore_screen.dart';
 
 class ExploreScreen extends StatelessWidget {
   ExploreScreen({Key? key}) : super(key: key);
-  
+
   final controller = Get.put(ExploreController());
 
   @override
@@ -42,7 +42,7 @@ class ExploreScreen extends StatelessWidget {
                           height: 60,
                           decoration: BoxDecoration(
                             color: controller.indexOfPsychProblem == index
-                                ? AppColor.primaryColor
+                                ? AppColors.primaryColor
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(10),
                           ),

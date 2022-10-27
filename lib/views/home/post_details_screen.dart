@@ -45,7 +45,7 @@ class _PostDetailsScreenState extends State<PostDetailsScreen> {
             onPressed: () => Get.back(),
             icon: Icon(
               Icons.close_rounded,
-              color: AppColor.primaryColor,
+              color: AppColors.primaryColor,
             ),
           ),
           actions: [

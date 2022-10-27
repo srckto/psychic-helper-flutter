@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AppColor {
+class AppColors {
   static const grayColor = Color(0xFF515C6F);
 
   static final fontGrayColor = grayColor.withOpacity(0.5);
 
   static const canvasColor = Color(0xFFF5F6F8);
+
+  static const red = Colors.red;
 
   static const _primaryColorValue = 0xFFFF6969;
 

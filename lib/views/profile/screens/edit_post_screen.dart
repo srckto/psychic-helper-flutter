@@ -40,7 +40,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
           onPressed: () => Get.back(),
           icon: Icon(
             Icons.arrow_back_ios,
-            color: AppColor.primaryColor,
+            color: AppColors.primaryColor,
           ),
         ),
         actions: [
@@ -133,7 +133,7 @@ class _EditPostScreenState extends State<EditPostScreen> {
                             controller.saveUpdates();
                           },
                     text: "حفظ التعديلات",
-                    buttonColor: controller.isLoading ? Colors.brown : AppColor.primaryColor,
+                    buttonColor: controller.isLoading ? Colors.brown : AppColors.primaryColor,
                   );
                 },
               ),

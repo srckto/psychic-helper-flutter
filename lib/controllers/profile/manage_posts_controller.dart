@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:psychic_helper/helper/main_user.dart';
 import 'package:psychic_helper/models/post_model.dart';
@@ -32,7 +33,7 @@ class ManagePostsController extends GetxController {
       
       update();
     } catch (e) {
-      print(e.toString());
+      debugPrint(e.toString());
     }
   }
 }
