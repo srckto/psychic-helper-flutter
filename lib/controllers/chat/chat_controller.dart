@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:psychic_helper/helper/cache_storage.dart';
 import 'package:psychic_helper/helper/constants.dart';
 import 'package:psychic_helper/helper/main_user.dart';
+import 'package:psychic_helper/helper/status_request.dart';
 import 'package:psychic_helper/models/chat_model.dart';
 import 'package:psychic_helper/models/user_model.dart';
 import 'package:psychic_helper/network/chat_service.dart';
@@ -15,19 +16,20 @@ import 'package:psychic_helper/network/firestore_service.dart';
 
 class ChatController extends GetxController {
   List<ChatModel> chats = [];
-  bool isLoading = false;
+  late StatusRequest statusRequest;
   StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? chatSteam;
 
   @override
   void onInit() async {
     super.onInit();
     chats = [];
+    statusRequest = StatusRequest.none;
     chatSteam = listingToChat();
     update();
   }
 
   StreamSubscription<QuerySnapshot<Map<String, dynamic>>> listingToChat() {
-    isLoading = true;
+    statusRequest = StatusRequest.loading;
     update();
 
     return FirebaseFirestore.instance
@@ -43,7 +45,7 @@ class ChatController extends GetxController {
       },
       onError: (error) {
         debugPrint(error.toString());
-        isLoading = false;
+        statusRequest = StatusRequest.failure;
         update();
       },
     );
@@ -106,10 +108,10 @@ class ChatController extends GetxController {
           }
         }
       }
-      isLoading = false;
+      statusRequest = StatusRequest.success;
       update();
     } catch (e) {
-      isLoading = false;
+      statusRequest = StatusRequest.failure;
       update();
       debugPrint(e.toString());
     }

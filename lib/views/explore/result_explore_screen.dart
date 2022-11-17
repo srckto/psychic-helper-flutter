@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:psychic_helper/components/build_image.dart';
 
+import 'package:psychic_helper/components/build_image.dart';
 import 'package:psychic_helper/components/custom_text.dart';
 import 'package:psychic_helper/components/empty_screen.dart';
 import 'package:psychic_helper/controllers/explore/result_explore_controller.dart';
 import 'package:psychic_helper/helper/app_color.dart';
+import 'package:psychic_helper/helper/handle_view_status.dart';
 import 'package:psychic_helper/models/user_model.dart';
 import 'package:psychic_helper/views/chat/chat_details_screen_logic02.dart';
 
@@ -34,31 +35,46 @@ class ResultExploreScreen extends StatelessWidget {
           width: Get.width,
           child: GetBuilder<ResultExploreController>(
             builder: (controller) {
-              if (controller.isLoading) return Center(child: CircularProgressIndicator());
-              if (controller.users.isEmpty)
-                return EmptyScreen(
-                  message: "لا يوجد اي معالج متوفر",
-                );
-              return ListView.separated(
-                itemCount: controller.users.length,
-                separatorBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      Divider(),
-                      SizedBox(height: 20),
-                    ],
-                  );
-                },
-                itemBuilder: (BuildContext context, int index) {
-                  return _BuildUserItem(
-                    model: controller.users[index],
-                  );
-                },
+              return HandleViewStatus(
+                statusRequest: controller.statusRequest,
+                widget: _BuildExplore(controller: controller),
+                reTryFunction: controller.onInit,
               );
             },
           ),
         ),
       ),
+    );
+  }
+}
+
+class _BuildExplore extends StatelessWidget {
+  const _BuildExplore({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
+  final ResultExploreController controller;
+  @override
+  Widget build(BuildContext context) {
+    if (controller.users.isEmpty)
+      return EmptyScreen(
+        message: "لا يوجد اي معالج متوفر",
+      );
+    return ListView.separated(
+      itemCount: controller.users.length,
+      separatorBuilder: (BuildContext context, int index) {
+        return Column(
+          children: [
+            Divider(),
+            SizedBox(height: 20),
+          ],
+        );
+      },
+      itemBuilder: (BuildContext context, int index) {
+        return _BuildUserItem(
+          model: controller.users[index],
+        );
+      },
     );
   }
 }
