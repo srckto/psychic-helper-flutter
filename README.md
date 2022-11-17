@@ -4,7 +4,7 @@
 - Platform : Android.
 - Back-end: Firebase.
 - Language: Arabic.
-- Auth < Register, Login >.
+- Auth < Register, Login, Rest Password >.
 - Two account type < person , doctor >.
 - ** doctor account features < add , delete , update > post.
 - Search doctors accounts.
