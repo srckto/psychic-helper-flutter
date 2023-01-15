@@ -76,6 +76,7 @@ class ChatController extends GetxController {
     List<String> lastMessage = [];
     List<String> dateTimeOfLastMessage = [];
     List<String> idOfMyConnections = [];
+    List<int> messagesCount = [];
     List<bool?> isShowLastMessage = [];
     chats = [];
 
@@ -85,6 +86,7 @@ class ChatController extends GetxController {
           idOfMyConnections.add(element.data()["uId"]);
           lastMessage.add(element.data()["lastMessage"]);
           dateTimeOfLastMessage.add(element.data()["dateTime"]);
+          messagesCount.add(element.data()["messagesCount"] ?? 0);
           isShowLastMessage.add(element.data()["isShowLastMessage"]);
         }
       });
@@ -100,6 +102,7 @@ class ChatController extends GetxController {
               ChatModel(
                 dateTime: dateTimeOfLastMessage[i],
                 lastMessage: lastMessage[i],
+                messagesCount: messagesCount[i],
                 isShowLastMessage: isShowLastMessage[i],
                 userModel: UserModel.fromMap(queryOfUsers.docs[j].data()),
               ),

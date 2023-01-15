@@ -37,7 +37,6 @@ class ChatDetailsControllerLogic2 extends GetxController {
     super.onInit();
   }
 
-
   StreamSubscription<DocumentSnapshot<Map<String, dynamic>>> checkShowMessages(String receiveId) {
     return FirebaseFirestore.instance
         .collection("users")
@@ -51,6 +50,7 @@ class ChatDetailsControllerLogic2 extends GetxController {
           debugPrint(event.reference.id);
           event.reference.update({
             "isShowLastMessage": true,
+            "messagesCount": 0,
           });
         }
       },

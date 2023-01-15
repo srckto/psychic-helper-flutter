@@ -53,6 +53,7 @@ class _BuildChatScreen extends StatelessWidget {
           model: controller.chats[index].userModel!,
           lastMessage: controller.chats[index].lastMessage!,
           isShowLastMessage: controller.chats[index].isShowLastMessage!,
+          messagesCount: controller.chats[index].messagesCount ?? 0,
         );
       },
     );
@@ -63,11 +64,13 @@ class _BuildUserItem extends StatelessWidget {
   final UserModel model;
   final String lastMessage;
   final bool? isShowLastMessage;
+  final int messagesCount;
   const _BuildUserItem({
     Key? key,
     required this.model,
     required this.lastMessage,
     required this.isShowLastMessage,
+    required this.messagesCount,
   }) : super(key: key);
 
   @override
@@ -154,7 +157,17 @@ class _BuildUserItem extends StatelessWidget {
             if (!isShowLastMessage!)
               CircleAvatar(
                 backgroundColor: Colors.blue,
-                radius: 5,
+                radius: 15,
+                child: Center(
+                  child: Text(
+                    messagesCount.toString(),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
               ),
           ],
         ),

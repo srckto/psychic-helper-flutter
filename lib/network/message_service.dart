@@ -85,11 +85,12 @@ class MessageService {
         .doc(receiveId)
         .collection("chats")
         .doc(MainUser.model!.uId)
-        .set({
+        .update({
       "dateTime": DateTime.now().microsecondsSinceEpoch.toString(),
       "lastMessage": messageModel.text,
       "isShowLastMessage": false,
       "uId": MainUser.model?.uId,
+      "messagesCount" : FieldValue.increment(1),
     });
   }
 }
